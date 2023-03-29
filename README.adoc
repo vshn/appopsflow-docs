@@ -1,0 +1,34 @@
+= VSHN AppOps and AppFlow VSHNeer documentation
+
+This repository contains all the content hosted at https://kb.vshn.ch/appopsflow/.
+
+The content is written in https://asciidoctor.org/docs/what-is-asciidoc/[AsciiDoc] and rendered using https://docs.antora.org/[Antora].
+
+[TIP]
+====
+* Writing AsciiDoc is best done using Visual Studio Code with https://marketplace.visualstudio.com/items?itemName=asciidoctor.asciidoctor-vscode[the AsciiDoc addon].
+* For a reference what you can do with AsciiDoc, have a look at https://asciidoctor.org/docs/asciidoc-writers-guide/[AsciiDoc Writer’s Guide].
+* Antora is capable of doing many great things with documentation. See https://docs.antora.org/[the Antora docs] to gain insights into the tooling.
+====
+
+== Contributing
+
+Create a new branch to make the changes. After you're satisfied with the changes open a Pull Request against the `master` branch.
+
+=== Previewing Changes
+
+To preview your changes locally, make sure you have Docker or Podman installed.
+
+Just type `make preview` and open your browser at http://localhost:2020. This even provides support for live reload when working on the content. See https://github.com/vshn/antora-preview#livereload[this documentation] for more information about it.
+
+=== Adding a New Page
+
+. Create new AsciiDoc (`.adoc`) file in the best matching folder according to the described structure under `docs/modules/ROOT/pages/`.
+. Add the file to the navigation under `docs/modules/ROOT/partials/`
+
+For removing pages just do the opposite: Remove the file and remove the entry in the navigation.
+
+== Deployment
+
+This repository only holds https://docs.antora.org/antora/latest/standard-directories/[Antora content], no plumbing and tooling (aka the Antora https://docs.antora.org/antora/latest/run-antora/[`playbook.yml`] and `Dockerfile`) to build and deploy it.
+All pushes to the `master` branch trigger a GitHub action (`.github/worflows/triggerci.yml`) which in turn triggers the https://git.vshn.net/vshn/docs/kb/-/blob/master/.gitlab-ci.yml[GitLab CI job] to build and deploy the content using Antora.
