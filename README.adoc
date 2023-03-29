@@ -32,3 +32,4 @@ For removing pages just do the opposite: Remove the file and remove the entry in
 
 This repository only holds https://docs.antora.org/antora/latest/standard-directories/[Antora content], no plumbing and tooling (aka the Antora https://docs.antora.org/antora/latest/run-antora/[`playbook.yml`] and `Dockerfile`) to build and deploy it.
 All pushes to the `master` branch trigger a GitHub action (`.github/worflows/triggerci.yml`) which in turn triggers the https://git.vshn.net/vshn/docs/kb/-/blob/master/.gitlab-ci.yml[GitLab CI job] to build and deploy the content using Antora.
+
