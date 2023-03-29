@@ -9,13 +9,13 @@ use_podman := $(shell command -v podman 2>&1 >/dev/null; p="$$?"; \
 
 ifeq ($(use_podman),0)
 	engine_cmd  ?= podman
-	engine_opts ?= --rm --tty --userns=keep-id
+	engine_opts ?= --rm --userns=keep-id
 else
 	engine_cmd  ?= docker
-	engine_opts ?= --rm --tty --user "$$(id -u)"
+	engine_opts ?= --rm --user "$$(id -u)"
 endif
 
-preview_cmd ?= docker run --rm --publish 35729:35729 --publish 2020:2020 --volume "${PWD}":/preview/antora vshn/antora-preview:3.1.2.3 --antora=docs --style=vshn
+preview_cmd ?= $(engine_cmd) run $(engine_opts) --publish 35729:35729 --publish 2020:2020 --volume "${PWD}":/preview/antora ghcr.io/vshn/antora-preview:3.1.2.3 --antora=docs --style=vshn
 vale_cmd ?= $(engine_cmd) run $(engine_opts) --volume "$${PWD}"/docs/modules:/pages:Z docker.io/vshn/vale:2.10.5.1 --minAlertLevel=error /pages
 
 UNAME := $(shell uname)
