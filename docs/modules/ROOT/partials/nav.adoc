@@ -1,1 +1,2 @@
 * xref:index.adoc[About]
+* xref:yay.adoc[]
