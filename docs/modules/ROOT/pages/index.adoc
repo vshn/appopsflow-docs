@@ -1,6 +1,9 @@
 = VSHN AppOps and AppFlow for VSHNeers
 
 image::vshn-appops.svg[VSHN AppOps,400,link=https://products.docs.vshn.ch/products/appops/index.html]
+
+---
+
 image::vshn-appflow.svg[VSHN AppOps,400,link=https://products.docs.vshn.ch/products/appflow/index.html]
 
 Welcome to the VSHN AppOps and AppFlow for VSHNeers documentation site.
